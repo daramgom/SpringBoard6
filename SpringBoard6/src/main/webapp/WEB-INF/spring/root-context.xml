@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- 프로젝트 관련 스프링 설정의 정보(객체)를 가지고 있는 파일 -->
@@ -66,7 +68,10 @@
 	</bean>
 	<!-- SqlSession (SqlSessionTemplate) : connection 생성(+연결정보), SQL 쿼리 실행, Mybatis, 자원해제(자동) -->
 		
-		
+	
+	<context:component-scan base-package="com.itwillbs.persistence"></context:component-scan>
+	<context:component-scan base-package="com.itwillbs.service"></context:component-scan>
+	
 		
 		
 </beans>
