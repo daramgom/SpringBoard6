@@ -83,16 +83,23 @@ public class BoardController {
 	
 	// 글 본문내용 보기
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
-	public String readGET(@RequestParam("bno") int bno) throws Exception {
+	public String readGET(@RequestParam("bno") int bno, Model model) throws Exception {
 		logger.debug(" ( •̀ ω •́ )✧ /board/read -> readGET() 호출 ");
 		logger.debug(" ( •̀ ω •́ )✧ 전달정보 저장(파라메터) ");
 		logger.debug(" ( •̀ ω •́ )✧ bno : "+bno);
 		
 		logger.debug(" ( •̀ ω •́ )✧ 디비에 글 조회수 1증가 ");
+		bService.updateViewcnt(bno);
 		
 		logger.debug(" ( •̀ ω •́ )✧ 디비에 글 내용 정보를 가져와서 출력(전달) ");
+		BoardVO vo = bService.read(bno);
 		
-		return "";
+		// 전달할 정보를 저장
+		model.addAttribute(vo); // 전달이름 boardVO
+		
+		// 페이지 이동
+		return "/board/read";
+		
 	}
 	
 	

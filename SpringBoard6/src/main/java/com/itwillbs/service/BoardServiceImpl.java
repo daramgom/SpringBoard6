@@ -43,7 +43,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void updateViewcnt(int bno) throws Exception {
-		logger.debug(" ( •̀ ω •́ )✧ readplus() 호출 ");
+		logger.debug(" ( •̀ ω •́ )✧ updateViewcnt(int bno) 호출 ");
 		bdao.updateViewcnt(bno);
 	}
 
