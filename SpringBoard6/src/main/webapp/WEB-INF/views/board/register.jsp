@@ -3,7 +3,7 @@
 
 <%@ include file="../include/header.jsp"%>
 
-<h1>/board/regist.jsp</h1>
+<h1>/board/register.jsp</h1>
 
 <div class="box box-primary">
 	<div class="box-header with-border">
