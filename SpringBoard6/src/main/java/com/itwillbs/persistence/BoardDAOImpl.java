@@ -38,6 +38,13 @@ public class BoardDAOImpl implements BoardDAO {
 		logger.debug(" listAll() 호출 ");
 		return sqlSession.selectList(NAMESPACE + "listAll");
 	}
+
+
+	@Override
+	public BoardVO getBoard(int bno) throws Exception {
+		logger.debug(" ( •̀ ω •́ )✧ getBoard(int bno) 호출 ");
+		return sqlSession.selectOne(NAMESPACE + "getBoard", bno);
+	}
 	
 	
 
