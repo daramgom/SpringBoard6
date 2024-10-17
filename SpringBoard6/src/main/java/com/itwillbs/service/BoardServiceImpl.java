@@ -35,4 +35,10 @@ public class BoardServiceImpl implements BoardService {
 		return bdao.listAll();
 	}
 
+	@Override
+	public BoardVO read(int bno) throws Exception {
+		logger.debug(" ( •̀ ω •́ )✧ read(int bno) 호출 ");
+		return bdao.getBoard(bno);
+	}
+
 }

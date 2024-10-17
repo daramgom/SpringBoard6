@@ -9,4 +9,6 @@ public interface BoardDAO {
 	public void createBoard(BoardVO vo) throws Exception;
 	
 	public List<BoardVO> listAll() throws Exception;
+	
+	public BoardVO 
 }
