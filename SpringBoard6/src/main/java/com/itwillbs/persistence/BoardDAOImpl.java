@@ -48,9 +48,9 @@ public class BoardDAOImpl implements BoardDAO {
 
 
 	@Override
-	public void readPlus(int bno) throws Exception {
-		logger.debug(" ( •̀ ω •́ )✧ readPlus() 호출 ");
-		sqlSession.update(NAMESPACE + "readPlus", bno);
+	public void updateViewcnt(int bno) throws Exception {
+		logger.debug(" ( •̀ ω •́ )✧ updateViewcnt(int bno) 호출 ");
+		sqlSession.update(NAMESPACE + "increaseViewcnt", bno);
 	}
 	
 	

@@ -39,9 +39,16 @@
   <!-- 글 본문 조회(select) -->
   
   <!-- 글 조회수 1증가 -->
-  <update id="readplus">
-  	update tbl_board set viewcnt = viewcnt+1 where bno = #{bno};
+  <update id="increaseViewcnt">
+  	update tbl_board set viewcnt = viewcnt + 1  
+  	 where bno = #{bno};
   </update>
   <!-- 글 조회수 1증가 -->
+  
+  
+  
+  
+  
+  
   
 </mapper>

@@ -44,7 +44,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void readPlus(int bno) throws Exception {
 		logger.debug(" ( •̀ ω •́ )✧ readplus() 호출 ");
-		bdao.readPlus(bno);
+		bdao.updateViewcnt(bno);
 	}
 
 }
