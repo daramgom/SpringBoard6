@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
@@ -79,6 +80,20 @@ public class BoardController {
 		
 	}
 	
+	
+	// 글 본문내용 보기
+	@RequestMapping(value = "/read", method = RequestMethod.GET)
+	public String readGET(@RequestParam("bno") int bno) throws Exception {
+		logger.debug(" ( •̀ ω •́ )✧ /board/read -> readGET() 호출 ");
+		logger.debug(" ( •̀ ω •́ )✧ 전달정보 저장(파라메터) ");
+		logger.debug(" ( •̀ ω •́ )✧ bno : "+bno);
+		
+		logger.debug(" ( •̀ ω •́ )✧ 디비에 글 조회수 1증가 ");
+		
+		logger.debug(" ( •̀ ω •́ )✧ 디비에 글 내용 정보를 가져와서 출력(전달) ");
+		
+		return "";
+	}
 	
 	
 	
