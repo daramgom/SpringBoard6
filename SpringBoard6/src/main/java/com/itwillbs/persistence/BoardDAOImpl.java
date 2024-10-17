@@ -45,6 +45,13 @@ public class BoardDAOImpl implements BoardDAO {
 		logger.debug(" ( •̀ ω •́ )✧ getBoard(int bno) 호출 ");
 		return sqlSession.selectOne(NAMESPACE + "getBoard", bno);
 	}
+
+
+	@Override
+	public void readPlus(int bno) throws Exception {
+		logger.debug(" ( •̀ ω •́ )✧ readPlus() 호출 ");
+		sqlSession.update(NAMESPACE + "readPlus", bno);
+	}
 	
 	
 

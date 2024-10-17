@@ -11,4 +11,6 @@ public interface BoardDAO {
 	public List<BoardVO> listAll() throws Exception;
 	
 	public BoardVO getBoard(int bno) throws Exception;
+	
+	public void readPlus(int bno) throws Exception;
 }
