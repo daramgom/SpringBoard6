@@ -16,7 +16,7 @@ public interface BoardService {
 	public BoardVO read(int bno) throws Exception;
 	
 	// 글 조회수 1증가
-	public void readPlus(int bno) throws Exception;
+	public void updateViewcnt(int bno) throws Exception;
 	
 	
 }
