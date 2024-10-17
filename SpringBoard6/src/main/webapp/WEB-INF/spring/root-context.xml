@@ -54,8 +54,8 @@
 		<!-- classpath:/는 src/main/resources 폴더를 의미함 -->
 		<property name="configLocation"
 				  value="classpath:/mybatis-config.xml"/>
-		<!-- <property name="mapperLocations"
-			 	  value="classpath:/mappers/**/*Mapper.xml"/> -->
+		<property name="mapperLocations"
+			 	  value="classpath:/mappers/**/*Mapper.xml"/> 
 	</bean>
 	<!-- SqlSessionFactory : connection 생성(+연결정보), SQL 쿼리 실행, Mybatis -->
 
