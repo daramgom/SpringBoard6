@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
 import com.itwillbs.service.BoardService;
+import com.mysql.cj.Session;
 
 @Controller
 @RequestMapping(value = "/board/*") // /board/~ 로 시작하는 모든주소를 처리하는 컨트롤러
@@ -101,6 +104,60 @@ public class BoardController {
 		return "/board/read";
 		
 	}
+	
+	
+	// 게시판 글 수정하기
+	@GetMapping(value = "/modify")
+	public void modifyGET(@RequestParam int bno, Model model) throws Exception {
+		logger.debug(" ( •̀ ω •́ )✧ /board/modify -> modifyGET() 호출 ");
+		
+		// 전달받을 정보(bno) 저장
+		logger.debug(" ( •̀ ω •́ )✧ bno : "+bno);
+		// 서비스 -> DAO : 게시판 글 정보를 가져오기
+		// BoardVO resultVO = bService.read(bno); 
+		// 가져온 글 정보를 뷰페이지에 출력
+		// model.addAttribute("resultVO", resultVO);
+		model.addAttribute(bService.read(bno));
+		
+	}
+	
+	
+	// 게시판 글 수정하기
+	@PostMapping(value = "/modify")
+	public String modifyPOST(BoardVO vo, RedirectAttributes rttr) throws Exception {
+		logger.debug(" ( •̀ ω •́ )✧ /board/modify -> modifyPOST() 호출 ");
+		
+		// 전달받을 정보(파라메터) 저장(bno, title, content, writer)
+		logger.debug(" ( •̀ ω •́ )✧ vo : "+vo);
+		
+		// 서비스 -> DAO : 글정보 수정하기 동작
+		bService.modify(vo);
+		
+		// 다시 글 리스트 페이지로 이동
+		// view 페이지에 정보 전달(1회성 데이터)
+		rttr.addFlashAttribute("result", "MODIFYOK");
+		
+		return "redirect:/board/listAll";
+	}
+	
+	
+	// 게시판 글 삭제 - POST
+	@PostMapping(value = "/remove")
+	public String removePOST(@RequestParam int bno, RedirectAttributes rttr) throws Exception {
+		logger.debug(" ( •̀ ω •́ )✧ /board/modify -> removePOST() 호출 ");
+		
+		// 전달정보 저장(bno)
+		
+		// 서비스 -> DAO : 게시판 글 삭제 동작
+		int result = bService.remove(bno);
+		if (result == 0) {
+			return "redirect:/board/read?bno="+bno;
+		}
+		rttr.addFlashAttribute("result","DELETEOK");
+		return "redirect:/board/listAll";
+	}
+	
+	
 	
 	
 	
