@@ -56,7 +56,12 @@ result : ${result }
 	if(result == "INSERTOK") {
 		alert(" 정상적으로 글쓰기 동작 완료! ");
 	}
-	
+	if(result == "MODIFYOK") {
+		alert(" 정상적으로 글수정 동작 완료! ");
+	}
+	if(result == "DELETEOK") {
+		alert(" 정상적으로 글삭제 동작 완료! ");
+	}
 	
 </script>
 

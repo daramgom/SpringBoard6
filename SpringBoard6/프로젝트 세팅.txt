@@ -35,3 +35,16 @@ project Facets / Dynamic web module / 3.1
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 		</dependency>
+		
+		
+* Mybatis에서 문법 차이		
+
+ #{} : PreparedStatement 객체의 파라메터 값을 전달할 때 사용 (?값 넣기)
+ 		자동으로 입력값 처리
+ 		
+ ${} : 단순 문자열 치환 
+		SQL 구문 요소를 변경하고자 할 때 사용
+		 insert into tbl_member values('"+name+"','"+email"' + ...);
+		 
+		 insert into ${테이블명} values('"+name+"','"+email"' + ...);
+		 

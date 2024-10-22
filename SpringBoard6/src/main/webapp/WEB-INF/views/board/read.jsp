@@ -12,7 +12,11 @@ ${boardVO }
 	<div class="box-header with-border">
 		<h3 class="box-title">게시판 글 본문내용</h3>
 	</div>
-
+	
+	<!-- bno 정보를 전달하는 폼태그 -->
+	<form role="form" action="">
+		<input type="hidden" name="bno" value="${boardVO.bno }">
+	</form>
 
 	<div class="box-body">
 		<div class="form-group">
@@ -56,6 +60,24 @@ ${boardVO }
 			location.href="/board/listAll";
 		});
 		
+		// bno를 가지고있는 폼태그 정보를 가져오기
+		var formObj = $("form[role='form']");
+		
+		
+		// 수정 버튼 클릭 시
+		$(".btn-primary").click(function(){
+			formObj.attr("action","/board/modify");
+			formObj.attr("method","get");
+			formObj.submit();
+			
+		});
+		
+		// 삭제 버튼 클릭 시
+		$(".btn-danger").click(function(){
+			formObj.attr("action","/board/remove");
+			formObj.attr("method","post");
+			formObj.submit();
+		});
 		
 		
 		
