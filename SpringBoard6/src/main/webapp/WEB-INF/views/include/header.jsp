@@ -36,7 +36,7 @@
         <!-- Logo -->
         <a href="${pageContext.request.contextPath }/board/listAll" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>A</b>LT</span>
+          <span class="logo-mini"><b>I</b>B</span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>ITWILL</b> BOARD</span>
         </a>
