@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.Criteria;
 import com.itwillbs.service.BoardService;
-import com.mysql.cj.Session;
 
 @Controller
 @RequestMapping(value = "/board/*") // /board/~ 로 시작하는 모든주소를 처리하는 컨트롤러
@@ -71,6 +71,27 @@ public class BoardController {
 		
 		// 서비스 -> DAO 메서드 호출 (출력할 정보 가져오기)
 		List<BoardVO> boardList = bService.listAll();
+		logger.debug(" 리스트 사이즈 : "+boardList.size());
+		
+		// Model 객체를 사용해서 정보를 저장
+		model.addAttribute(boardList); 
+		model.addAttribute("boardList", boardList);
+		
+		// 연결된 뷰페이지에서 출력		
+		logger.debug(" ( •̀ ω •́ )✧ /board/listAll.jsp 페이지 이동 ");
+		
+		
+	}
+	
+	// 게시판 리스트(Page) - GET
+	@RequestMapping(value = "/listPage",method = RequestMethod.GET)
+	public void listPageGET(Criteria cri, Model model) throws Exception{
+		logger.debug(" /listPage -> listPageGET(Model model) 호출 ");
+		
+		// Criteria cri = new Criteria();
+		
+		// 서비스 -> DAO 메서드 호출 (출력할 정보 가져오기)
+		List<BoardVO> boardList = bService.listPage(cri);
 		logger.debug(" 리스트 사이즈 : "+boardList.size());
 		
 		// Model 객체를 사용해서 정보를 저장

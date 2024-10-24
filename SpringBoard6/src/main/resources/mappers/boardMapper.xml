@@ -32,6 +32,18 @@
   </select>
   <!-- 글 목록 조회(select) -->
   
+  <!-- 글 목록 조회(select) -->
+  <select id="listPage" resultType="com.itwillbs.domain.BoardVO" 
+  	resultMap="board">
+  	<![CDATA[
+  	 select * from tbl_board 
+  	  where bno > 0 
+  	   order by bno desc, regdate desc 
+  	    limit #{startPage},#{pageSize}
+  	]]>
+  </select>
+  <!-- 글 목록 조회(select) -->
+  
   <!-- 글 본문 조회(select) -->
   <select id="getBoard" resultType="board">
   	select * from tbl_board where bno = #{bno}
