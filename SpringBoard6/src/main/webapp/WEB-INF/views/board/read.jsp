@@ -57,7 +57,7 @@ ${boardVO }
 		
 		// 목록버튼 클릭 시 게시판 목록으로 이동
 		$(".btn-default").click(function(){
-			location.href="/board/listAll";
+			location.href="/board/listPage";
 		});
 		
 		// bno를 가지고있는 폼태그 정보를 가져오기

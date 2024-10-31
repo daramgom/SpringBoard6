@@ -2,18 +2,13 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../include/header.jsp"%>
-result : ${result }
+result : ${result } <br>
+pageVO : ${pageVO } <br>
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">아이티윌 자유게시판</h3>
 		<div class="box-tools">
-			<ul class="pagination pagination-sm no-margin pull-right">
-				<li><a href="#">«</a></li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">»</a></li>
-			</ul>
+			
 		</div>
 	</div>
 
@@ -40,7 +35,21 @@ result : ${result }
 			</tbody>
 		</table>
 	</div>
-
+	<div class="box-footer">
+			<ul class="pagination pagination-sm no-margin pull-right">
+				<!-- 이전 버튼 -->
+				<c:if test="${pageVO.prev }">
+					<li><a href="/board/listPage?page=${pageVO.startPage - 1 }">«</a></li>
+				</c:if>
+				<c:forEach begin="${pageVO.startPage }" end="${pageVO.endPage }" var="i">
+					<li ${pageVO.cri.page == i? 'class="active"':'' }><a href="/board/listPage?page=${i }">${i }</a></li>
+				</c:forEach>
+				<!-- 다음 버튼 -->
+				<c:if test="${pageVO.next }">
+					<li><a href="/board/listPage?page=${pageVO.endPage + 1 }">»</a></li>
+				</c:if>
+			</ul>
+	</div>
 </div>
 
 

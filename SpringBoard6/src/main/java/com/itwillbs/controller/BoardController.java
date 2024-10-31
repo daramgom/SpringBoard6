@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
 import com.itwillbs.domain.Criteria;
+import com.itwillbs.domain.PageVO;
 import com.itwillbs.service.BoardService;
 
 @Controller
@@ -61,7 +62,7 @@ public class BoardController {
 		
 		// 페이지 이동(list)
 		
-		return "redirect:/board/listAll";
+		return "redirect:/board/listPage";
 	}
 	
 	// 게시판 리스트 - GET
@@ -90,6 +91,11 @@ public class BoardController {
 		
 		// Criteria cri = new Criteria();
 		
+		// 페이징처리 블럭정보 계산&정보 저장
+		PageVO pageVO = new PageVO();
+		pageVO.setCri(cri);
+		pageVO.setTotalCount(bService.getTotalCount()); // 임시로 총 개수를 직접 작성
+		
 		// 서비스 -> DAO 메서드 호출 (출력할 정보 가져오기)
 		List<BoardVO> boardList = bService.listPage(cri);
 		logger.debug(" 리스트 사이즈 : "+boardList.size());
@@ -98,8 +104,11 @@ public class BoardController {
 		model.addAttribute(boardList); 
 		model.addAttribute("boardList", boardList);
 		
+		// 페이징처리 정보 전달
+		model.addAttribute("pageVO", pageVO);
+		
 		// 연결된 뷰페이지에서 출력		
-		logger.debug(" ( •̀ ω •́ )✧ /board/listAll.jsp 페이지 이동 ");
+		logger.debug(" ( •̀ ω •́ )✧ /board/listPage.jsp 페이지 이동 ");
 		
 		
 	}
@@ -158,7 +167,7 @@ public class BoardController {
 		// view 페이지에 정보 전달(1회성 데이터)
 		rttr.addFlashAttribute("result", "MODIFYOK");
 		
-		return "redirect:/board/listAll";
+		return "redirect:/board/listPage";
 	}
 	
 	
@@ -175,7 +184,7 @@ public class BoardController {
 			return "redirect:/board/read?bno="+bno;
 		}
 		rttr.addFlashAttribute("result","DELETEOK");
-		return "redirect:/board/listAll";
+		return "redirect:/board/listPage";
 	}
 	
 	

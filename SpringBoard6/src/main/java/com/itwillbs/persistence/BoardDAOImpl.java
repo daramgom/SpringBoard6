@@ -88,6 +88,13 @@ public class BoardDAOImpl implements BoardDAO {
 		logger.debug(" ( •̀ ω •́ )✧ deleteBoard(BoardVO vo) 호출 ");
 		return sqlSession.delete(NAMESPACE + "deleteBoard", bno);
 	}
+
+
+	@Override
+	public int getTotalCount() throws Exception {
+		logger.debug(" ( •̀ ω •́ )✧ getTotalCount() 실행 ");
+		return sqlSession.selectOne((NAMESPACE) + "pageCnt");
+	}
 	
 	
 	

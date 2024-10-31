@@ -21,4 +21,6 @@ public interface BoardDAO {
 	public void updateBoard(BoardVO vo) throws Exception;
 	
 	public int deleteBoard(int bno) throws Exception;
+	
+	public int getTotalCount() throws Exception;
 }

@@ -25,4 +25,10 @@ public interface BoardService {
 	
 	// 글 삭제
 	public int remove(int bno) throws Exception;
+	
+	// 글 총 개수 조회
+	public int getTotalCount() throws Exception;
+	
+	
+	
 }

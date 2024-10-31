@@ -65,6 +65,12 @@ public class BoardServiceImpl implements BoardService {
 		logger.debug(" ( •̀ ω •́ )✧ remove(BoardVO vo) 호출 ");
 		return bdao.deleteBoard(bno);
 	}
+
+	@Override
+	public int getTotalCount() throws Exception {
+		logger.debug(" ( •̀ ω •́ )✧ getTotalCount() 호출 ");
+		return bdao.getTotalCount();
+	}
 	
 	
 	

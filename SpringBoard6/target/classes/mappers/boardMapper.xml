@@ -71,5 +71,11 @@
   </delete>
   <!-- 글 삭제 -->
   
+  <!-- 페이징처리 총 글 개수 -->
+  <select id="pageCnt" resultType="int">
+  	select count(bno) 
+  	 from tbl_board 
+  </select>
+  <!-- 페이징처리 총 글 개수 -->
   
 </mapper>
